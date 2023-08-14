@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_pos/views/account.dart';
 import 'package:pharmacy_pos/views/dashboard.dart';
 import 'package:pharmacy_pos/views/settings.dart';
-import 'package:side_navigation/side_navigation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,17 +27,23 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Row(
         children: [
           NavigationRail(
-            onDestinationSelected: (value) => selectedIndex,
+            leading: const FlutterLogo(),
+            onDestinationSelected: (value) {
+              setState(() {
+                selectedIndex = value;
+              });
+            },
             destinations: const [
               NavigationRailDestination(
-                  icon: Icon(
-                    CupertinoIcons.home,
-                  ),
-                  selectedIcon: Icon(
-                    CupertinoIcons.house_fill,
-                  ),
-                  label: Text("Home"),
-                  padding: EdgeInsets.all(10)),
+                icon: Icon(
+                  CupertinoIcons.home,
+                ),
+                selectedIcon: Icon(
+                  CupertinoIcons.house_fill,
+                ),
+                label: Text("Home"),
+                padding: EdgeInsets.only(top: 50, bottom: 10),
+              ),
               NavigationRailDestination(
                   icon: Icon(
                     CupertinoIcons.square_grid_2x2,
@@ -47,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     CupertinoIcons.square_grid_2x2_fill,
                   ),
                   label: Text("Sales"),
-                  padding: EdgeInsets.all(10)),
+                  padding: EdgeInsets.all(5)),
               NavigationRailDestination(
                   icon: Icon(
                     CupertinoIcons.chart_pie,
@@ -56,40 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     CupertinoIcons.chart_pie_fill,
                   ),
                   label: Text("Reports"),
-                  padding: EdgeInsets.all(10)),
+                  padding: EdgeInsets.all(5)),
             ],
             selectedIndex: selectedIndex,
           ),
-          // SideNavigationBar(
-          //   header: const SideNavigationBarHeader(
-          //     image: FlutterLogo(),
-          //     title: Text(""),
-          //     subtitle: Text(""),
-          //   ),
-          //   initiallyExpanded: false,
-          //   selectedIndex: selectedIndex,
-          //   items: const [
-          //     SideNavigationBarItem(
-          //       icon: CupertinoIcons.home,
-          //       label: 'Dashboard',
-          //     ),
-          //     SideNavigationBarItem(
-          //       icon: Icons.person,
-          //       label: 'Account',
-          //     ),
-          //     SideNavigationBarItem(
-          //       icon: Icons.settings,
-          //       label: 'Settings',
-          //     ),
-          //   ],
-          //   onTap: (index) {
-          //     setState(() {
-          //       selectedIndex = index;
-          //     });
-          //   },
-          // ),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: views.elementAt(selectedIndex),
           ),
           Expanded(
