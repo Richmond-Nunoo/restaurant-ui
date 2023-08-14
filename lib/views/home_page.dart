@@ -5,6 +5,7 @@ import 'package:pharmacy_pos/views/dashboard.dart';
 import 'package:pharmacy_pos/views/logout.dart';
 import 'package:pharmacy_pos/views/profile_screen.dart';
 import 'package:pharmacy_pos/views/settings.dart';
+import 'package:window_manager/window_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,79 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WindowListener {
+  @override
+  void initState() {
+    super.initState();
+    windowManager.addListener(this);
+  }
+
+  @override
+  void dispose() {
+    windowManager.removeListener(this);
+    super.dispose();
+  }
+
+  @override
+  void onWindowEvent(String eventName) {
+    print('[WindowManager] onWindowEvent: $eventName');
+  }
+
+  @override
+  void onWindowClose() {
+    // do something
+  }
+
+  @override
+  void onWindowFocus() {
+    // do something
+  }
+
+  @override
+  void onWindowBlur() {
+    // do something
+  }
+
+  @override
+  void onWindowMaximize() {
+    // do something
+  }
+
+  @override
+  void onWindowUnmaximize() {
+    // do something
+  }
+
+  @override
+  void onWindowMinimize() {
+    // do something
+  }
+
+  @override
+  void onWindowRestore() {
+    // do something
+  }
+
+  @override
+  void onWindowResize() {
+    // do something
+  }
+
+  @override
+  void onWindowMove() {
+    // do something
+  }
+
+  @override
+  void onWindowEnterFullScreen() {
+    // do something
+  }
+
+  @override
+  void onWindowLeaveFullScreen() {
+    // do something
+  }
+
   List<Widget> views = const [
     DashBoard(),
     SettingsScreen(),
@@ -31,73 +104,70 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: LayoutBuilder(
         builder: (BuildContext context, constraints) {
-          //   final double availableHeight = constraints.maxHeight;
           final screenHeight = MediaQuery.of(context).size.height;
           if (screenHeight <= 600) {
             return Column(
               children: [
-                Flexible(
+                Expanded(
                   child: views.elementAt(selectedIndex),
                 ),
                 BottomNavigationBar(
-                  selectedItemColor: Colors.black,
-                  unselectedItemColor: Colors.black,
-                  showUnselectedLabels: true,
-                  selectedLabelStyle: const TextStyle(color: Colors.black),
-                  unselectedLabelStyle: const TextStyle(color: Colors.black),
+                  iconSize: 20,
+                  elevation: 10,
+                  type: BottomNavigationBarType.fixed,
                   items: const [
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.home,
-                        color: Colors.black,
+                        //   color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.house_fill,
-                        color: Colors.black,
+                        // color: Colors.black,
                       ),
                       label: 'Home',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.square_grid_2x2,
-                        color: Colors.black,
+                        //   color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.square_grid_2x2_fill,
-                        color: Colors.black,
+                        //  color: Colors.black,
                       ),
                       label: 'Sales',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.chart_pie,
-                        color: Colors.black,
+                        //  color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
-                        color: Colors.black,
+                        //   color: Colors.black,
                       ),
                       label: 'Reports',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.person_circle,
-                        color: Colors.black,
+                        //    color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.person_circle_fill,
-                        color: Colors.black,
+                        //   color: Colors.black,
                       ),
                       label: 'Profile Screen',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.chart_pie,
-                        color: Colors.black,
+                        //    color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
-                        color: Colors.black,
+                        //    color: Colors.black,
                       ),
                       label: 'Settings',
                     ),
@@ -116,6 +186,8 @@ class _HomeScreenState extends State<HomeScreen> {
             return Row(
               children: [
                 NavigationRail(
+                  minExtendedWidth: 230,
+                  elevation: 10,
                   trailing: IconButton(
                     icon: const Icon(
                       CupertinoIcons.arrow_down_right_arrow_up_left,
@@ -142,17 +214,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         CupertinoIcons.house_fill,
                       ),
                       label: Text("Home"),
-                      padding: EdgeInsets.only(top: 50, bottom: 10),
+                      padding: EdgeInsets.only(top: 50, bottom: 0),
                     ),
                     NavigationRailDestination(
-                        icon: Icon(
-                          CupertinoIcons.square_grid_2x2,
-                        ),
-                        selectedIcon: Icon(
-                          CupertinoIcons.square_grid_2x2_fill,
-                        ),
-                        label: Text("Sales"),
-                        padding: EdgeInsets.all(5)),
+                      icon: Icon(
+                        CupertinoIcons.square_grid_2x2,
+                      ),
+                      selectedIcon: Icon(
+                        CupertinoIcons.square_grid_2x2_fill,
+                      ),
+                      label: Text("Sales"),
+                    ),
                     NavigationRailDestination(
                       icon: Icon(
                         CupertinoIcons.chart_pie,
@@ -167,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: Icon(CupertinoIcons.person_circle),
                         selectedIcon: Icon(CupertinoIcons.person_circle_fill),
                         label: Text("Profile Screen"),
-                        padding: EdgeInsets.only(top: 5, bottom: 5)),
+                        padding: EdgeInsets.only(top: 0, bottom: 0)),
                     NavigationRailDestination(
                         icon: Icon(
                           CupertinoIcons.chart_pie,
@@ -176,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           CupertinoIcons.chart_pie_fill,
                         ),
                         label: Text("Settings"),
-                        padding: EdgeInsets.only(top: 5, bottom: 5)),
+                        padding: EdgeInsets.only(top: 5, bottom: 0)),
                   ],
                   selectedIndex: selectedIndex,
                 ),

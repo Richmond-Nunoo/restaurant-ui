@@ -6,7 +6,6 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
       body: Row(
         children: [
           Flexible(
@@ -15,11 +14,12 @@ class DashBoard extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: 100,
               itemBuilder: (context, index) {
-                return Container(
-                  color: Colors.white,
+                return SizedBox(
                   height: 50,
                   width: double.infinity,
-                  child: Text("${index + 1}"),
+                  child: Card(
+                    child: Text("${index + 1}"),
+                  ),
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
@@ -29,10 +29,13 @@ class DashBoard extends StatelessWidget {
               },
             ),
           ),
-          Flexible(
-            child: Container(
+          const Flexible(
+            child: SizedBox(
               height: double.maxFinite,
-              color: Colors.white,
+              width: double.maxFinite,
+              child: Card(
+                child: Text("Cart"),
+              ),
             ),
           ),
         ],
