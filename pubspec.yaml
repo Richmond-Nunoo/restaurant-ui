@@ -38,6 +38,7 @@ dependencies:
   side_navigation: ^1.0.4
   window_manager: ^0.3.5
   shared_preferences: ^2.2.0
+  fluent_ui: ^4.7.2
 
 dev_dependencies:
   flutter_test:

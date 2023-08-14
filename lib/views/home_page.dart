@@ -15,10 +15,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with WindowListener {
+  late bool isPreventClose;
   @override
   void initState() {
     super.initState();
     windowManager.addListener(this);
+    preventValue();
+    _init();
+  }
+
+  void preventValue() async {
+    isPreventClose = await windowManager.isPreventClose();
+  }
+
+  void _init() async {
+    await windowManager.setPreventClose(true);
+    setState(() {});
   }
 
   @override
@@ -33,58 +45,33 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
   }
 
   @override
-  void onWindowClose() {
-    // do something
-  }
-
-  @override
-  void onWindowFocus() {
-    // do something
-  }
-
-  @override
-  void onWindowBlur() {
-    // do something
-  }
-
-  @override
-  void onWindowMaximize() {
-    // do something
-  }
-
-  @override
-  void onWindowUnmaximize() {
-    // do something
-  }
-
-  @override
-  void onWindowMinimize() {
-    // do something
-  }
-
-  @override
-  void onWindowRestore() {
-    // do something
-  }
-
-  @override
-  void onWindowResize() {
-    // do something
-  }
-
-  @override
-  void onWindowMove() {
-    // do something
-  }
-
-  @override
-  void onWindowEnterFullScreen() {
-    // do something
-  }
-
-  @override
-  void onWindowLeaveFullScreen() {
-    // do something
+  void onWindowClose() async {
+    final currentContext = context; // Store the context reference
+    if (isPreventClose) {
+      showDialog(
+        context: currentContext,
+        builder: (_) {
+          return AlertDialog(
+            title: const Text('Are you sure you want to close this window?'),
+            actions: [
+              TextButton(
+                child: const Text('No'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: const Text('Yes'),
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                  await windowManager.destroy();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   List<Widget> views = const [
@@ -99,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
   int selectedIndex = 0;
   bool isExpanded = false;
 
+  bool themevalue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -188,18 +176,26 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                 NavigationRail(
                   minExtendedWidth: 230,
                   elevation: 10,
-                  trailing: IconButton(
-                    icon: const Icon(
-                      CupertinoIcons.arrow_down_right_arrow_up_left,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isExpanded = !isExpanded;
-                      });
-                    },
+                  trailing: Column(
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          CupertinoIcons.arrow_down_right_arrow_up_left,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isExpanded = !isExpanded;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                   extended: isExpanded,
-                  leading: const FlutterLogo(),
+                  leading: const Column(
+                    children: [
+                      FlutterLogo(),
+                    ],
+                  ),
                   onDestinationSelected: (value) {
                     setState(() {
                       selectedIndex = value;
@@ -214,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                         CupertinoIcons.house_fill,
                       ),
                       label: Text("Home"),
-                      padding: EdgeInsets.only(top: 50, bottom: 0),
+                      padding: EdgeInsets.only(top: 40, bottom: 0),
                     ),
                     NavigationRailDestination(
                       icon: Icon(
@@ -233,13 +229,13 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                         CupertinoIcons.chart_pie_fill,
                       ),
                       label: Text("Reports"),
-                      padding: EdgeInsets.only(top: 5, bottom: 200),
+                      padding: EdgeInsets.only(top: 0, bottom: 100),
                     ),
                     NavigationRailDestination(
-                        icon: Icon(CupertinoIcons.person_circle),
-                        selectedIcon: Icon(CupertinoIcons.person_circle_fill),
-                        label: Text("Profile Screen"),
-                        padding: EdgeInsets.only(top: 0, bottom: 0)),
+                      icon: Icon(CupertinoIcons.person_circle),
+                      selectedIcon: Icon(CupertinoIcons.person_circle_fill),
+                      label: Text("Profile Screen"),
+                    ),
                     NavigationRailDestination(
                         icon: Icon(
                           CupertinoIcons.chart_pie,

@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_pos/views/home_page.dart';
 import 'package:window_manager/window_manager.dart';
 
+enum AppTheme {
+  light,
+  dark,
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
@@ -15,7 +20,7 @@ void main() async {
       titleBarStyle: TitleBarStyle.normal,
       alwaysOnTop: true,
       windowButtonVisibility: true,
-      title: "Receipt App");
+      title: "Restaurant UI");
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();
     await windowManager.focus();
@@ -31,6 +36,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  AppTheme _currentTheme = AppTheme.light;
+
+  void _toggleTheme() {
+    setState(() {
+      _currentTheme =
+          _currentTheme == AppTheme.light ? AppTheme.dark : AppTheme.light;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,9 +52,11 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       darkTheme: ThemeData.dark(),
       theme: ThemeData(
+        cardColor: Colors.white,
         scaffoldBackgroundColor: Colors.grey.shade100,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.white,
+          primaryContainer: Colors.white,
+          seedColor: Colors.orange,
         ),
         useMaterial3: true,
       ),
