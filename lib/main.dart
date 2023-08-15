@@ -2,25 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_pos/views/home_page.dart';
 import 'package:window_manager/window_manager.dart';
 
-enum AppTheme {
-  light,
-  dark,
-}
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
 
   WindowOptions windowOptions = const WindowOptions(
-      size: Size(1000, 700),
-      minimumSize: Size(980, 550),
-      center: false,
-      backgroundColor: Colors.transparent,
-      skipTaskbar: false,
-      titleBarStyle: TitleBarStyle.normal,
-      alwaysOnTop: true,
-      windowButtonVisibility: true,
-      title: "Restaurant UI");
+    size: Size(1000, 700),
+    minimumSize: Size(980, 550),
+    center: false,
+    backgroundColor: Colors.transparent,
+    skipTaskbar: false,
+    titleBarStyle: TitleBarStyle.normal,
+    alwaysOnTop: false,
+    windowButtonVisibility: true,
+    title: "Restaurant UI",
+  );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();
     await windowManager.focus();

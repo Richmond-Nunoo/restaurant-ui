@@ -45,7 +45,7 @@ class OrderSummary extends StatelessWidget {
                             "Discounted Sales",
                             style: TextStyle(fontSize: 12),
                           ),
-                          Text("\$37.61")
+                          Text("-\$5.00")
                         ],
                       ),
                       Row(
@@ -55,7 +55,7 @@ class OrderSummary extends StatelessWidget {
                             "Total Sales Tax",
                             style: TextStyle(fontSize: 12),
                           ),
-                          Text("\$37.61")
+                          Text("\$2.25")
                         ],
                       ),
                     ],
@@ -75,7 +75,10 @@ class OrderSummary extends StatelessWidget {
                         "Total ",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text("\$37.61")
+                      Text(
+                        "\$34.86",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )
                     ],
                   ),
                 ),

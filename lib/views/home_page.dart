@@ -214,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                         color: Colors.orange,
                       ),
                       label: Text("Reports"),
-                      padding: EdgeInsets.only(top: 0, bottom: 50),
+                      padding: EdgeInsets.only(top: 0, bottom: 0),
                     ),
                     NavigationRailDestination(
                       icon: Icon(CupertinoIcons.person_circle),

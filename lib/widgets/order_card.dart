@@ -17,11 +17,12 @@ class OrderCard extends StatelessWidget {
         height: 50,
         width: 45,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            image: DecorationImage(
-              image: AssetImage(orderData.imgUrl),
-              fit: BoxFit.cover,
-            )),
+          borderRadius: BorderRadius.circular(5),
+          image: DecorationImage(
+            image: AssetImage(orderData.imgUrl),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
       title: Text(
         orderData.foodName,
