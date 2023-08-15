@@ -110,7 +110,6 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.house_fill,
-                        // color: Colors.black,
                       ),
                       label: 'Home',
                     ),
@@ -129,18 +128,15 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
-                        //   color: Colors.black,
                       ),
                       label: 'Reports',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.person_circle,
-                        //    color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.person_circle_fill,
-                        //   color: Colors.black,
                       ),
                       label: 'Profile ',
                     ),
@@ -151,7 +147,6 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
-                        //    color: Colors.black,
                       ),
                       label: 'Settings',
                     ),
@@ -170,6 +165,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
             return Row(
               children: [
                 NavigationRail(
+                  selectedLabelTextStyle: const TextStyle(color: Colors.orange),
                   minExtendedWidth: 140,
                   elevation: 10,
                   trailing: IconButton(
@@ -234,10 +230,10 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     ),
                     NavigationRailDestination(
                         icon: Icon(
-                          CupertinoIcons.chart_pie,
+                          CupertinoIcons.gear,
                         ),
                         selectedIcon: Icon(
-                          CupertinoIcons.chart_pie_fill,
+                          CupertinoIcons.gear_alt_fill,
                           color: Colors.orange,
                         ),
                         label: Text("Settings"),
