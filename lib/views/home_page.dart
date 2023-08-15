@@ -4,7 +4,7 @@ import 'package:pharmacy_pos/views/account.dart';
 import 'package:pharmacy_pos/views/dashboard.dart';
 import 'package:pharmacy_pos/views/logout.dart';
 import 'package:pharmacy_pos/views/profile_screen.dart';
-import 'package:pharmacy_pos/views/settings.dart';
+import 'package:pharmacy_pos/views/food_menu.dart';
 import 'package:window_manager/window_manager.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
       body: LayoutBuilder(
         builder: (BuildContext context, constraints) {
           final screenHeight = MediaQuery.of(context).size.height;
-          if (screenHeight <= 600) {
+          if (screenHeight <= 550) {
             return Column(
               children: [
                 Expanded(
@@ -107,7 +107,6 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.home,
-                        //   color: Colors.black,
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.house_fill,
@@ -176,26 +175,18 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                 NavigationRail(
                   minExtendedWidth: 230,
                   elevation: 10,
-                  trailing: Column(
-                    children: [
-                      IconButton(
-                        icon: const Icon(
-                          CupertinoIcons.arrow_down_right_arrow_up_left,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            isExpanded = !isExpanded;
-                          });
-                        },
-                      ),
-                    ],
+                  trailing: IconButton(
+                    icon: const Icon(
+                      CupertinoIcons.arrow_down_right_arrow_up_left,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isExpanded = !isExpanded;
+                      });
+                    },
                   ),
                   extended: isExpanded,
-                  leading: const Column(
-                    children: [
-                      FlutterLogo(),
-                    ],
-                  ),
+                  leading: const FlutterLogo(),
                   onDestinationSelected: (value) {
                     setState(() {
                       selectedIndex = value;
@@ -205,9 +196,11 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     NavigationRailDestination(
                       icon: Icon(
                         CupertinoIcons.home,
+                        size: 20,
                       ),
                       selectedIcon: Icon(
                         CupertinoIcons.house_fill,
+                        color: Colors.orange,
                       ),
                       label: Text("Home"),
                       padding: EdgeInsets.only(top: 40, bottom: 0),
@@ -215,9 +208,11 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     NavigationRailDestination(
                       icon: Icon(
                         CupertinoIcons.square_grid_2x2,
+                        size: 20,
                       ),
                       selectedIcon: Icon(
                         CupertinoIcons.square_grid_2x2_fill,
+                        color: Colors.orange,
                       ),
                       label: Text("Sales"),
                     ),
@@ -227,13 +222,17 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                       ),
                       selectedIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
+                        color: Colors.orange,
                       ),
                       label: Text("Reports"),
-                      padding: EdgeInsets.only(top: 0, bottom: 100),
+                      padding: EdgeInsets.only(top: 0, bottom: 50),
                     ),
                     NavigationRailDestination(
                       icon: Icon(CupertinoIcons.person_circle),
-                      selectedIcon: Icon(CupertinoIcons.person_circle_fill),
+                      selectedIcon: Icon(
+                        CupertinoIcons.person_circle_fill,
+                        color: Colors.orange,
+                      ),
                       label: Text("Profile Screen"),
                     ),
                     NavigationRailDestination(
@@ -242,6 +241,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                         ),
                         selectedIcon: Icon(
                           CupertinoIcons.chart_pie_fill,
+                          color: Colors.orange,
                         ),
                         label: Text("Settings"),
                         padding: EdgeInsets.only(top: 5, bottom: 0)),

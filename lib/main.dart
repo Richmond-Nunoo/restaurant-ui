@@ -54,11 +54,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         cardColor: Colors.white,
         scaffoldBackgroundColor: Colors.grey.shade100,
-        colorScheme: ColorScheme.fromSeed(
-          primaryContainer: Colors.white,
-          seedColor: Colors.orange,
-        ),
-        useMaterial3: true,
+        useMaterial3: false,
       ),
       home: const HomeScreen(),
     );
