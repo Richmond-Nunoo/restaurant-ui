@@ -13,7 +13,7 @@ void main() async {
 
   WindowOptions windowOptions = const WindowOptions(
       size: Size(1000, 700),
-      minimumSize: Size(900, 500),
+      minimumSize: Size(950, 500),
       center: false,
       backgroundColor: Colors.transparent,
       skipTaskbar: false,
@@ -36,15 +36,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  AppTheme _currentTheme = AppTheme.light;
-
-  void _toggleTheme() {
-    setState(() {
-      _currentTheme =
-          _currentTheme == AppTheme.light ? AppTheme.dark : AppTheme.light;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -117,18 +117,18 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.square_grid_2x2,
-                        //   color: Colors.black,
+               
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.square_grid_2x2_fill,
-                        //  color: Colors.black,
+                 
                       ),
                       label: 'Sales',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.chart_pie,
-                        //  color: Colors.black,
+                   
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
