@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pharmacy_pos/views/account.dart';
-import 'package:pharmacy_pos/views/dashboard.dart';
-import 'package:pharmacy_pos/views/logout.dart';
-import 'package:pharmacy_pos/views/profile_screen.dart';
-import 'package:pharmacy_pos/views/food_menu.dart';
+import 'package:pharmacy_pos/views/user_reports.dart';
+import 'package:pharmacy_pos/views/user_dashboard.dart';
+import 'package:pharmacy_pos/views/user_settings.dart';
+import 'package:pharmacy_pos/views/user_profile.dart';
+import 'package:pharmacy_pos/views/user_food_menu.dart';
 import 'package:window_manager/window_manager.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -76,17 +76,15 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
 
   List<Widget> views = const [
     DashBoard(),
-    SettingsScreen(),
-    AccountsScreen(),
+    FoodMenu(),
+    ReportsScreen(),
     ProfileScreen(),
-    LogOutScreen(),
+    SettingsScreen(),
   ];
 
-  /// The currently selected index of the bar
   int selectedIndex = 0;
   bool isExpanded = false;
 
-  bool themevalue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,11 +140,10 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
-                        CupertinoIcons.chart_pie,
-                        //    color: Colors.black,
+                        CupertinoIcons.gear,
                       ),
                       activeIcon: Icon(
-                        CupertinoIcons.chart_pie_fill,
+                        CupertinoIcons.gear_alt_fill,
                       ),
                       label: 'Settings',
                     ),

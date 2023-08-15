@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DashBoard extends StatelessWidget {
-  const DashBoard({super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Home Page"),
+        child: Text("Settings Screen"),
       ),
     );
   }

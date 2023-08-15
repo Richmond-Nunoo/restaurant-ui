@@ -4,14 +4,14 @@ import 'package:pharmacy_pos/widgets/dotted_lines.dart';
 
 import '../models/food_model.dart';
 
-class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+class FoodMenu extends StatefulWidget {
+  const FoodMenu({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  State<FoodMenu> createState() => _FoodMenuState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _FoodMenuState extends State<FoodMenu> {
   List category = [
     {
       "Icon": Icons.breakfast_dining,
