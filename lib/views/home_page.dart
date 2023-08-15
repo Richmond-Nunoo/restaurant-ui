@@ -147,7 +147,6 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                       ),
                       label: 'Settings',
                     ),
-                    // Add more BottomNavigationBar items as needed
                   ],
                   currentIndex: selectedIndex,
                   onTap: (index) {
