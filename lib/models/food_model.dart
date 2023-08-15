@@ -82,3 +82,33 @@ List<FoodModel> allFoods = [
     id: 8,
   ),
 ];
+
+List<FoodModel> currentOrder = [
+  FoodModel(
+    foodName: "Cheese Croissant",
+    foodDescription:
+        " A cheese croissant is a savory variation that features a filling made with a blend of cheese, typically Gruyere, Emmental, or cheddar.",
+    foodPrice: 10.01,
+    perPeice: "22 pcs",
+    imgUrl: "assets/images/1.jpg",
+    id: 11,
+  ),
+  FoodModel(
+    foodName: "Matcha Croissant",
+    foodDescription:
+        "Matcha croissants are gaining popularity for their unique flavor and vibrant green color.",
+    foodPrice: 22.02,
+    perPeice: "12 pcs",
+    imgUrl: "assets/images/7.jpg",
+    id: 12,
+  ),
+  FoodModel(
+    foodName: "Savory Spinach and Feta Croissant",
+    foodDescription:
+        "This croissant is filled with a savory mixture of sautéed spinach and crumbled feta cheese. ",
+    foodPrice: 5.58,
+    perPeice: "34 pcs",
+    imgUrl: "assets/images/12.jpg",
+    id: 13,
+  ),
+];

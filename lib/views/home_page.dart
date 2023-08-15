@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
       body: LayoutBuilder(
         builder: (BuildContext context, constraints) {
           final screenHeight = MediaQuery.of(context).size.height;
-          if (screenHeight <= 550) {
+          if (screenHeight <= 600) {
             return Column(
               children: [
                 Expanded(
@@ -117,18 +117,15 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.square_grid_2x2,
-               
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.square_grid_2x2_fill,
-                 
                       ),
                       label: 'Sales',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         CupertinoIcons.chart_pie,
-                   
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.chart_pie_fill,
@@ -145,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                         CupertinoIcons.person_circle_fill,
                         //   color: Colors.black,
                       ),
-                      label: 'Profile Screen',
+                      label: 'Profile ',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
@@ -173,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
             return Row(
               children: [
                 NavigationRail(
-                  minExtendedWidth: 230,
+                  minExtendedWidth: 140,
                   elevation: 10,
                   trailing: IconButton(
                     icon: const Icon(
@@ -233,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> with WindowListener {
                         CupertinoIcons.person_circle_fill,
                         color: Colors.orange,
                       ),
-                      label: Text("Profile Screen"),
+                      label: Text("Profile "),
                     ),
                     NavigationRailDestination(
                         icon: Icon(
